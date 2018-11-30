@@ -1,0 +1,180 @@
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+[disabled],
+[aria-disabled="true"] {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+[hidden] {
+  display: none;
+}
+
+[aria-hidden="true"] {
+  visibility: hidden;
+}
+
+body {
+  background-color: #0d0c0c;
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+    -webkit-transform: translatey(-40px);
+            transform: translatey(-40px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translatey(0);
+            transform: translatey(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    -webkit-transform: translatey(-40px);
+            transform: translatey(-40px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translatey(0);
+            transform: translatey(0);
+  }
+}
+.wrapper {
+  background-color: #282727;
+  color: white;
+  max-width: 50rem;
+  width: 95%;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin: 5rem auto;
+  opacity: 0;
+  -webkit-animation-duration: 1250ms;
+          animation-duration: 1250ms;
+  -webkit-animation-timing-function: cubic-bezier(0.44, -0.53, 0.74, 1.35);
+          animation-timing-function: cubic-bezier(0.44, -0.53, 0.74, 1.35);
+  -webkit-animation-name: fade-in;
+          animation-name: fade-in;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+@media screen and (max-width: 640px) {
+  .wrapper {
+    margin-top: 1rem;
+  }
+}
+
+.heading {
+  margin-bottom: 2.5rem;
+}
+
+.heading h1 {
+  font-size: 1.8040672364rem;
+  font-family: BlinkMacSystemFont, -apple-system, "Roboto", "Droid Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  line-height: 1.6;
+  font-style: normal;
+}
+
+.heading p {
+  font-size: 1.1262702942rem;
+  font-family: BlinkMacSystemFont, -apple-system, "Roboto", "Droid Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  font-style: normal;
+  max-width: 40rem;
+}
+
+.heading a,
+.footer a {
+  font-size: 1.1262702942rem;
+  font-family: BlinkMacSystemFont, -apple-system, "Roboto", "Droid Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  font-style: normal;
+  display: inline-block;
+  color: #00c6c6;
+}
+.heading a:first-of-type,
+.footer a:first-of-type {
+  margin-right: 1rem;
+}
+
+.goal-list {
+  list-style-type: none;
+}
+
+.goal-item {
+  font-size: 1.0011291504rem;
+  font-family: BlinkMacSystemFont, -apple-system, "Roboto", "Droid Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  font-style: normal;
+  position: relative;
+}
+
+.goal-item:before {
+  position: absolute;
+  content: '';
+  height: 0.75rem;
+  width: 0.75rem;
+  background-color: violet;
+  box-shadow: inset 0 0 0 0.125rem #282727;
+  border: 0.125rem solid cyan;
+  top: 0.5rem;
+  left: -1.5rem;
+  border-radius: 0.125rem;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.goal-item a {
+  text-decoration: none;
+  color: #f29ef2;
+  background-color: #4f2b4f;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+.goal-item a:hover, .goal-item a:focus {
+  text-decoration: underline;
+}
+
+.goal-item {
+  margin-bottom: 1rem;
+}
+
+.goal-item {
+  font-size: 1.0011291504rem;
+  font-family: BlinkMacSystemFont, -apple-system, "Roboto", "Droid Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
+  font-style: normal;
+}
+
+.footer {
+  margin-top: 5rem;
+}
+
