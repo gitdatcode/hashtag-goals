@@ -175,6 +175,11 @@ body {
 }
 
 .footer {
+  font-size: 1.0011291504rem;
+  font-family: BlinkMacSystemFont, -apple-system, "Roboto", "Droid Sans", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  font-style: normal;
   margin-top: 5rem;
 }
 
