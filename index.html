@@ -1,24 +1,92 @@
+<!DOCTYPE html>
 <html>
-<head>
-<title>2019 #Goals</title>
-<link rel="stylesheet" type="text/css" href="style.css" />
-</head>
-<body>
-<main class="wrapper">
-  <header class="heading">
-    <h1 class="heading__masthead">2019 Goals</h1>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim eveniet, suscipit nobis aliquid iusto sit unde totam ullam aspernatur libero sapiente adipisci nostrum deserunt molestias eum maiores delectus dicta temporibus dolorem ipsam. Tempora architecto illo provident quod molestiae ducimus quas.</p>
-    <div><a href="">Twitter Updates</a><a href="">Instagram Updates</a></div>
-  </header>
-  <section class="goals">
-    <ul class="goal-list">
-      <li class="goal-item">Are you a member of <a href="http://datcode.io" target="_blank">DatCode</a>? Edit this code on <a href="https://github.com/gitdatcode/hashtag-goals" target="_blank">GitHub to add your goal</a>!</li>
-      <li class="goal-item"><a target="_blank" href="http://twitter.com/_taurean">@Taurean</a> said he would <span>reach a positive ARR with his side project <a  target="_blank" href="https://cherrypicked.io">Cherrypicked.io</a></span></li>
-    </ul>
-    <footer class="footer">
-      <p>Interested in joining in? Sign up for <a href="http://datcode.io" target="_blank">DatCode</a></p>
-    </footer>
-  </section>
-</main>
-</body>
+    <head>
+        <title>
+            2019 #Goals
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <main class="wrapper">
+            <header class="heading">
+                <h1 class="heading__masthead">
+                    2019 Goals
+                </h1>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim eveniet, suscipit nobis aliquid iusto sit unde totam ullam aspernatur libero sapiente adipisci nostrum deserunt molestias eum maiores delectus dicta temporibus dolorem ipsam. Tempora architecto illo provident quod molestiae ducimus quas.
+                </p>
+                <div>
+                    <a href="">Twitter Updates</a><a href="">Instagram Updates</a>
+                </div>
+            </header>
+            <section class="goals">
+                <ul class="goal-list" id="goal_list">
+                    <li class="goal-item">Are you a member of <a href="http://datcode.io" target="_blank">DatCode</a>? Edit this code on <a href="https://github.com/gitdatcode/hashtag-goals" target="_blank">GitHub to add your goal</a>!
+                    </li>
+                    <li class="goal-item">
+                        <a target="_blank" href="http://twitter.com/_taurean">@Taurean</a> said he would <span>reach a positive ARR with his side project <a target="_blank" href="https://cherrypicked.io">Cherrypicked.io</a></span>
+                    </li>
+                </ul>
+                <footer class="footer">
+                    <p>
+                        Interested in joining in? Sign up for <a href="http://datcode.io" target="_blank">DatCode</a>
+                    </p>
+                </footer>
+            </section>
+        </main>
+        <script>
+            // add users here, this corresponds to the goals/*.json files
+            var users = ['mark'];
+
+            (function(){
+                var Goals = {
+                    goal_list: document.getElementById('goal_list'),
+                    goal_html: document.getElementById('goal_list').innerHTML,
+
+                    getUserGoals: function(username, fn){
+                        var xhr = new XMLHttpRequest(),
+                            uri = '/goals/'+ username +'.json';
+
+                        xhr.open('GET', uri, true);
+                        xhr.onload = function(){
+                            if (xhr.status == 200){
+                                fn(JSON.parse(xhr.responseText));
+                            } else {
+                                fn({});
+                            }
+                        };
+
+                        xhr.onerror = xhr.onabort = function(){
+                            fn({});
+                        };
+
+                        xhr.send();
+                    },
+
+                    listUserGoals: function(user){
+                        for(var i = 0, l = user.goals.length; i < l; i++){
+                            var goal = user.goals[i];
+                            console.log(goal)
+                            var li = '<li class="goal-item">' +
+                                    '<a target="_blank" href="'+ user.twitter +'">@'+ user.name +'</a> said '+ user.pronoun +' would <span>'+ goal.content +'</span>' +
+                                '</li>';
+
+                            Goals.goal_html += li;
+                            Goals.goal_list.innerHTML = Goals.goal_html;
+                        }
+                    },
+
+                    build: function(){
+                        for(var i = 0, l = users.length; i < l; i++){
+                            Goals.getUserGoals(users[i], function(user){
+                                Goals.listUserGoals(user);
+                            });
+                        }
+                    }
+                };
+
+                Goals.build();
+            }())
+        </script>
+    </body>
 </html>
